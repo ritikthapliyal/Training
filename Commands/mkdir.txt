@@ -1,0 +1,3 @@
+mkdir <file_name>
+
+creates a directory.
