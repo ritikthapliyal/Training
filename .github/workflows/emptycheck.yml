@@ -20,3 +20,15 @@ jobs:
           echo "File is not empty"
           exit 0
         fi
+        
+        
+  copy-file:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Copy the file
+      run: |
+          cp 123.txt 123_copy.txt
+          echo "123.txt file has been copied to 123_copy.txt"
+      shell: bash
