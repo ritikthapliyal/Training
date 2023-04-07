@@ -17,12 +17,7 @@ jobs:
         run: |
            cp 1234.txt 1234_copy.txt
            echo "1234.txt file has been copied to 1234_copy.txt"
-           git add 1234_copy.txt
-           git config --local user.email "actions@github.com"
-           git config --local user.name "GitHub Actions"
-           git commit -m "Add newfile.txt"
-           git push
-       shell: bash
+        shell: bash
       
       - name: Upload artifact
         uses: actions/upload-artifact@v2
