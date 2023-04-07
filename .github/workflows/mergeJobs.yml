@@ -1,0 +1,33 @@
+name: Create file on merge
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+jobs:
+  create-file:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Create file
+        run: |
+           cp 1234.txt 1234_copy.txt
+           echo "1234.txt file has been copied to 1234_copy.txt"
+           git add 1234_copy.txt
+           git config --local user.email "actions@github.com"
+           git config --local user.name "GitHub Actions"
+           git commit -m "Add newfile.txt"
+           git push
+       shell: bash
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: file-copy
+          path: 1234_copy.txt
+
+
